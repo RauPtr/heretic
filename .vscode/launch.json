@@ -1,0 +1,67 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Heretic: Run with model",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "heretic.main",
+            "args": ["${input:modelName}"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "HF_HUB_ENABLE_HF_TRANSFER": "1"
+            }
+        },
+        {
+            "name": "Heretic: Run with config file",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "heretic.main",
+            "args": ["--config", "${workspaceFolder}/config.toml", "${input:modelName}"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "HF_HUB_ENABLE_HF_TRANSFER": "1"
+            }
+        },
+        {
+            "name": "Heretic: Evaluate model",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "heretic.main",
+            "args": ["--model", "${input:baseModel}", "--evaluate-model", "${input:evaluateModel}"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "HF_HUB_ENABLE_HF_TRANSFER": "1"
+            }
+        },
+        {
+            "name": "Heretic: Show help",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "heretic.main",
+            "args": ["--help"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ],
+    "inputs": [
+        {
+            "id": "modelName",
+            "type": "promptString",
+            "description": "Enter the model name or path (e.g., Qwen/Qwen3-4B-Instruct-2507)"
+        },
+        {
+            "id": "baseModel",
+            "type": "promptString",
+            "description": "Enter the base model name (e.g., google/gemma-3-12b-it)"
+        },
+        {
+            "id": "evaluateModel",
+            "type": "promptString",
+            "description": "Enter the model to evaluate (e.g., p-e-w/gemma-3-12b-it-heretic)"
+        }
+    ]
+}

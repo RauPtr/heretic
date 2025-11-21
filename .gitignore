@@ -9,8 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-# Editors
-/.vscode/
+# Editors (personal settings - VS Code project config is tracked)
+/.vscode/*.code-workspace
 
 # Configuration files
 /config.toml

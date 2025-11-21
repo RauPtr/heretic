@@ -73,6 +73,79 @@ save the model, upload it to Hugging Face, chat with it to test how well it work
 or any combination of those actions.
 
 
+## Running in Visual Studio Code
+
+This project includes VS Code configuration files for easy development and debugging.
+
+### Prerequisites
+
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
+2. Install Python 3.10 or newer
+3. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or pip
+
+### Setup
+
+1. **Open the project in VS Code:**
+   ```bash
+   code /path/to/heretic
+   ```
+
+2. **Install recommended extensions** when prompted, or manually install:
+   - Python (`ms-python.python`)
+   - Debugpy (`ms-python.debugpy`)
+   - Ruff (`charliermarsh.ruff`)
+   - Pylance (`ms-python.vscode-pylance`)
+
+3. **Create a virtual environment and install dependencies:**
+
+   Using uv (recommended):
+   ```bash
+   uv venv
+   uv pip install -e .
+   ```
+
+   Or using pip:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   pip install -e .
+   ```
+
+4. **Select the Python interpreter:**
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
+   - Type "Python: Select Interpreter"
+   - Choose the interpreter from `.venv/bin/python`
+
+### Running and Debugging
+
+The project includes several launch configurations accessible via the Run and Debug panel (`Ctrl+Shift+D` / `Cmd+Shift+D`):
+
+- **Heretic: Run with model** - Run Heretic with a model name (you'll be prompted to enter it)
+- **Heretic: Run with config file** - Run using a `config.toml` file (copy from `config.default.toml`)
+- **Heretic: Evaluate model** - Evaluate a decensored model against its base
+- **Heretic: Show help** - Display all available command-line options
+
+To start debugging:
+1. Set breakpoints by clicking in the gutter next to line numbers
+2. Select a launch configuration from the dropdown in the Run and Debug panel
+3. Press `F5` or click the green play button
+
+### Running from the Terminal
+
+You can also run Heretic directly from VS Code's integrated terminal (`Ctrl+`` `):
+
+```bash
+# Activate the virtual environment (if not already active)
+source .venv/bin/activate
+
+# Run Heretic
+python -m heretic.main Qwen/Qwen3-4B-Instruct-2507
+
+# Or use the installed command
+heretic Qwen/Qwen3-4B-Instruct-2507
+```
+
+
 ## How it works
 
 Heretic implements a parametrized variant of directional ablation. For each
